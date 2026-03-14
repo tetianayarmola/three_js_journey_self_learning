@@ -1,0 +1,23 @@
+/*remove marging from all page obj*/
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+/*prevent any scrolling - prevents from scrolling beyond the limit of the viewport*/
+html,
+body
+{
+    overflow: hidden;
+}
+
+/*move canvas to the top left corner - to switch off scrolling*/
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;    /*removes blue outline*/
+
+}
