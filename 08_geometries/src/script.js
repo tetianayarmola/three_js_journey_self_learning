@@ -13,28 +13,20 @@ const scene = new THREE.Scene()
 // Object
 //const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2)
 
-//Float 32 array, buffer geometry object
-const positionArray = new Float32Array(9)  // 9/3 = 3 verticies for triangle
-// vertex 1
-positionArray[0] = 0;       //x
-positionArray[1] = 0;       //y
-positionArray[2] = 0;       //z
-
-// vertex 2
-positionArray[3] = 0;
-positionArray[4] = 1;
-positionArray[5] = 0;
-
-//vertex 3
-positionArray[6] = 1;
-positionArray[7] = 0;
-positionArray[8] = 0;
-
-// convert array into three jsbuffer attribute
-const positionAttribute = new THREE.BufferAttribute(positionArray, 3)  // saying 1 vertex contains 3 values
-
 const geometry = new THREE.BufferGeometry()
-geometry.setAttribute('position', positionAttribute)
+
+const count = 50;   // 50 triangles 
+const positionsArray = new Float32Array(count * 3 * 3)     // 50 triangles * 3 verticies each * 3 coordinates per vertex (xyz)
+
+//fill array with random values
+for (let i=0; i < count * 3 * 3; i++){
+    positionsArray[i] = (Math.random() - 0.5) * 4
+}
+
+// create attribute for buffer
+const positionsAttribute = new THREE.BufferAttribute(positionsArray, 3)    // 3 = how many values program will take per vertex
+
+geometry.setAttribute('position', positionsAttribute)
 
 const material = new THREE.MeshBasicMaterial({ 
     color: 0xff0000, 
